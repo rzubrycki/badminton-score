@@ -7,12 +7,13 @@
   "license": "ISC",
   "homepage": "https://rzubrycki.github.io/badminton-score/",
   "devDependencies": {
-    "parcel-bundler": "^1.12.4",
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
+    "gh-pages": "^2.2.0",
+    "parcel-bundler": "^1.12.4",
+    "parcel-plugin-sw-precache": "^1.1.1",
     "prettier": "^1.19.1",
-    "sass": "^1.22.9",
-    "gh-pages": "^2.2.0"
+    "sass": "^1.22.9"
   },
   "scripts": {
     "start": "parcel index.html --open",
