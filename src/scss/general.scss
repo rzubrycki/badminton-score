@@ -1,0 +1,54 @@
+body {
+  background-image: linear-gradient(to right, #434343 0%, black 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.scoreboard {
+  font-family: 'Orbitron', sans-serif;
+
+  .scores {
+    display: flex;
+    width: 95vw;
+    height: 80vh;
+
+    .player1,
+    .player2 {
+      width: 47.5vw;
+    }
+
+    .player1 {
+      background: white;
+      color: black;
+    }
+
+    .player2 {
+      background: black;
+      color: white;
+    }
+
+    .player1,
+    .player2,
+    .separator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 200px;
+    }
+
+    .separator {
+      position: absolute;
+      right: 50%;
+      left: 50%;
+      top: 50%;
+      bottom: 50%;
+      background: black;
+      -webkit-text-fill-color: white;
+      -webkit-text-stroke-width: 1px;
+      -webkit-text-stroke-color: black;
+    }
+  }
+}
