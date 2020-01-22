@@ -3,21 +3,19 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/js/index.js",
-  "author": "",
+  "author": "Robert Zubrycki",
   "license": "ISC",
   "homepage": "https://rzubrycki.github.io/badminton-score/",
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
-    "gh-pages": "^2.2.0",
     "parcel-bundler": "^1.12.4",
     "prettier": "^1.19.1",
     "sass": "^1.22.9"
   },
   "scripts": {
     "start": "parcel index.html --open",
-    "predeploy": "rm -rf dist && parcel build index.html --public-url /badminton-score",
-    "deploy": "gh-pages -d dist"
+    "prod": "parcel build index.html --no-minify --no-source-maps"
   },
   "dependencies": {
     "howler": "^2.1.3"
