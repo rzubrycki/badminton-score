@@ -1,5 +1,6 @@
 import '../scss/app.scss';
 
-import { speechRecognition } from './speechRecognition';
+import { speechRecognition, resetScoreBoard } from './speechRecognition';
 
 speechRecognition();
+document.querySelector('.reset-btn').addEventListener('click', resetScoreBoard);
