@@ -15,16 +15,24 @@ export function speechRecognition() {
   blackPlayerScoreBoard.textContent = whiteScore.length;
 
   const successSound = new Howl({
-    src: ['https://github.com/rzubrycki/badminton-score/blob/master/src/sounds/success.wav'],
+    src: [
+      'https://firebasestorage.googleapis.com/v0/b/badminton-sounds.appspot.com/o/success.wav?alt=media&token=4fee7ab9-5e92-4b4e-8174-c7422aba76c1'
+    ],
     html5: true
   });
 
   const errorSound = new Howl({
-    src: ['https://github.com/rzubrycki/badminton-score/blob/master/src/sounds/error.wav']
+    src: [
+      'https://firebasestorage.googleapis.com/v0/b/badminton-sounds.appspot.com/o/error.wav?alt=media&token=3743058d-b8e7-40d3-92f7-3a317db0ce3d'
+    ],
+    html5: true
   });
 
   const endGameSound = new Howl({
-    src: ['../sounds/applause.wav']
+    src: [
+      'https://firebasestorage.googleapis.com/v0/b/badminton-sounds.appspot.com/o/applause.wav?alt=media&token=c86e68b3-0580-44a3-b5a8-d9893da38480'
+    ],
+    html5: true
   });
 
   recognition.addEventListener('result', e => {
