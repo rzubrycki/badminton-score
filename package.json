@@ -18,6 +18,7 @@
     "prod": "parcel build index.html --no-minify --no-source-maps"
   },
   "dependencies": {
+    "confetti-js": "0.0.17",
     "howler": "^2.1.3"
   }
 }

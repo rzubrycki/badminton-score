@@ -5,21 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Badminton Score</title>
+    <title>Badminton Scoreboard</title>
     <link rel="apple-touch-icon" sizes="180x180" href="src/images/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="src/images/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="src/images/favicons/favicon-16x16.png">
-    <link rel="manifest" href="./manifest.webmanifest">
   </head>
 
   <body>
 
     <div class="scoreboard">
-      <div class="player1"></div>
-      <div class="player2"></div>
+      <div class="player1-sets">0</div>
+      <div class="player2-sets">0</div>
+      <div class="player1-points"></div>
+      <div class="player2-points"></div>
     </div>
 
     <button class="reset-btn">Reset Score</button>
+    <canvas id="fireworks"></canvas>
 
     <script src="./src/js/index.js"></script>
   </body>
