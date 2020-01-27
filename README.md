@@ -1,4 +1,5 @@
 #App to track badminton score.
+[logo]
 [logo]: https://github.com/rzubrycki/badminton-score/blob/master/src/images/favicons/apple-touch-icon.png
 ___
 
