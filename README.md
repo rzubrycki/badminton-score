@@ -1,6 +1,5 @@
 # App to track badminton score.
-[logo]
-[logo]: https://github.com/rzubrycki/badminton-score/blob/master/src/images/favicons/apple-touch-icon.png
+[](https://github.com/rzubrycki/badminton-score/blob/master/src/images/favicons/apple-touch-icon.png)
 ___
 
 [DEMO](https://inspiring-payne-3540e7.netlify.com/)
