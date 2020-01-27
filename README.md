@@ -37,7 +37,7 @@ ___
 **To run project locally:**
 > Requirements: [:rotating_light: Node.js](https://nodejs.org/en/)
 
-- `npm run install` => to install all node packages
-- `npm run start` => bundle app and open in a browser
-- `npm run prod` => production build
+- `npm run install` to install all node packages,
+- `npm run start` to bundle app and open it in a browser,
+- `npm run prod` to make a production build
 ___
