@@ -28,6 +28,7 @@ ___
 ___
 
 **To run project locally:**
+> Requirements: [:rotating_light: node.js](https://nodejs.org/en/)
 
 - `npm run install` => to install all node packages
 - `npm run start` => bundle app and open in a browser
