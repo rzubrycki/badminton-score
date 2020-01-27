@@ -9,6 +9,13 @@ ___
 
 Only **desktop version** available due to some inconsistencies of speech recognition web api on mobile devices.
 ___
+
+**Usage:**
+- app recognizes only two words for easier control during the game,
+- key words are **"biały"** and **"czarny"** respectively for white and black player score,
+- say "biały" or "czarny" to add a point,
+- supported languages by speech recognition web api - [list](https://cloud.google.com/speech-to-text/docs/languages)
+___
 **Tech stack:**
 - javascript
 - scss
@@ -18,7 +25,7 @@ ___
 - [:hammer_and_wrench: Parcel.js](https://parceljs.org/)
 
 **Api:**
-- [:loudspeaker: Speech recognition web api](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API) to handle voice recognition to control the app,
+- [:loudspeaker: Speech recognition web api](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API) to handle voice recognition and control the app,
 - [:tv: Fullscreen web api](https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API) to handle browser fullscreen functionality,
 - [:microphone: Howler.js](https://howlerjs.com/) to handle audio files,
 - [:fireworks: Confetti.js](https://github.com/Agezao/confetti-js#readme) to some fireworks after win match
