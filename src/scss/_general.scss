@@ -1,5 +1,5 @@
 body {
-  background-color: #434343;
+  background-color: $background-gray;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,8 +20,8 @@ button {
   border: none;
   border-radius: 5px;
   outline: none;
-  background-color: white;
-  color: black;
+  background-color: $font-white;
+  color: $font-black;
   padding: 2px 5px;
   font-size: 0.7em;
   z-index: 2;
@@ -42,7 +42,7 @@ canvas {
   border-radius: 50px;
   overflow: hidden;
   position: absolute;
-  box-shadow: 0px 0px 50px -5px rgba(204, 255, 0, 1);
+  box-shadow: 0px 0px 50px -5px $shadow-lime;
 
   .player1-points,
   .player2-points {
@@ -55,13 +55,13 @@ canvas {
   }
 
   .player1-points {
-    background-color: white;
-    color: black;
+    background-color: $font-white;
+    color: $font-black;
   }
 
   .player2-points {
-    background-color: black;
-    color: white;
+    background-color: $font-black;
+    color: $font-white;
   }
 
   .player1-sets,
@@ -76,12 +76,12 @@ canvas {
 
   .player1-sets {
     left: 40%;
-    color: black;
+    color: $font-black;
   }
 
   .player2-sets {
     left: 50%;
-    color: white;
+    color: $font-white;
   }
 }
 
