@@ -1,5 +1,4 @@
 import ConfettiGenerator from 'confetti-js';
-
 import { SuccessSound, EndGameSound } from '../const/sounds';
 import { ScoreValues } from '../const/scoreValues';
 
@@ -131,16 +130,4 @@ function resetScoreBoard() {
   updateSetsElements();
   confetti.clear();
   location.reload();
-}
-
-// enter browser fullscreen
-const fullscreenBtn = document.querySelector('.fullscreen-btn');
-fullscreenBtn.addEventListener('click', enterFullscreenMode);
-
-function enterFullscreenMode() {
-  if (document.fullscreenElement) {
-    document.exitFullscreen();
-  } else {
-    document.documentElement.requestFullscreen();
-  }
 }
