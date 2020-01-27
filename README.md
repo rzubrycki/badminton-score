@@ -1,4 +1,4 @@
-# App to track badminton score.
+# App to track badminton score
 ![](https://github.com/rzubrycki/badminton-score/blob/master/src/images/favicons/apple-touch-icon.png)
 ___
 
@@ -7,6 +7,8 @@ ___
 [BADMINTON RULES (IN POLISH)](https://www.badmin.pl/zasady-gry-w-badmintona-i-56.html)
 ___
 
+Only _desktop version_** available due to some inconsistencies of speech recognition web api on mobile devices.
+___
 Tech stack:
 - javascript
 - scss
