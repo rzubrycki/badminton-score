@@ -15,7 +15,7 @@ ___
 - html
 
 **Bundler:**
-- [Parcel.js](https://parceljs.org/)
+- [:hammer_and_wrench: Parcel.js](https://parceljs.org/)
 
 **Api:**
 - [:loudspeaker: Speech recognition web api](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API) to handle voice recognition to control the app,
@@ -28,7 +28,7 @@ ___
 ___
 
 **To run project locally:**
-> Requirements: [:rotating_light: node.js](https://nodejs.org/en/)
+> Requirements: [:rotating_light: Node.js](https://nodejs.org/en/)
 
 - `npm run install` => to install all node packages
 - `npm run start` => bundle app and open in a browser
