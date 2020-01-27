@@ -9,19 +9,26 @@ body {
   position: relative;
 }
 
-h1 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 0;
-  color: white;
-  padding: 5px;
+body,
+button {
+  font-family: 'Orbitron', sans-serif;
 }
 
-body,
-button,
-h1 {
-  font-family: 'Orbitron', sans-serif;
+button {
+  position: absolute;
+  right: 0;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  background-color: white;
+  color: black;
+  padding: 2px 5px;
+  font-size: 0.7em;
+  z-index: 2;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 canvas {
@@ -44,7 +51,7 @@ canvas {
     align-items: center;
     justify-content: center;
     position: relative;
-    font-size: 450px;
+    font-size: 430px;
   }
 
   .player1-points {
@@ -79,20 +86,11 @@ canvas {
 }
 
 .reset-btn {
-  position: absolute;
-  right: 0;
   bottom: 0;
-  border: none;
-  outline: none;
-  background-color: black;
-  color: white;
-  padding: 5px;
-  font-size: 0.8em;
-  z-index: 2;
+}
 
-  &:hover {
-    cursor: pointer;
-  }
+.fullscreen-btn {
+  bottom: 25px;
 }
 
 .move {

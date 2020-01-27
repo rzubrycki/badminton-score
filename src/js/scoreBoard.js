@@ -1,6 +1,6 @@
 import ConfettiGenerator from 'confetti-js';
 
-import { SuccessSound, ErrorSound, EndGameSound } from '../const/sounds';
+import { SuccessSound, EndGameSound } from '../const/sounds';
 import { ScoreValues } from '../const/scoreValues';
 
 const whitePlayer = {
@@ -11,11 +11,14 @@ const blackPlayer = {
   points: [],
   sets: []
 };
+
+// dom elements
 const whitePlayerSets = document.querySelector('.player1-sets');
 const blackPlayerSets = document.querySelector('.player2-sets');
 const whitePlayerPoints = document.querySelector('.player1-points');
 const blackPlayerPoints = document.querySelector('.player2-points');
 
+// confetti settings
 const confettiSettings = { target: 'fireworks', max: 50, clock: 40 };
 const confetti = new ConfettiGenerator(confettiSettings);
 
@@ -43,7 +46,12 @@ export function speechRecognition() {
         blackPlayerPoints.textContent = blackPlayer.points.length;
         SuccessSound.play();
       }
-      handleGameFlow();
+
+      if (whitePlayer.points.length + blackPlayer.points.length > 40) {
+        handleAdvantageScenario(transcript);
+      } else {
+        handleGameFlow();
+      }
       handleEndGame();
     }
   });
@@ -52,7 +60,68 @@ export function speechRecognition() {
   recognition.start();
 }
 
-export function resetScoreBoard() {
+/**
+ * HELPERS FUNCTIONS
+ */
+
+// handle the "normal game flow"
+function handleGameFlow() {
+  if (whitePlayer.points.length === 21) {
+    whitePlayer.sets.push(ScoreValues.addScore);
+    handleEndedSet();
+  } else if (blackPlayer.points.length === 21) {
+    blackPlayer.sets.push(ScoreValues.addScore);
+    handleEndedSet();
+  }
+  updateSetsElements();
+}
+
+// handle "advantage game flow"
+function handleAdvantageScenario(transcript) {
+  const isGameOver = Math.abs(whitePlayer.points.length - blackPlayer.points.length);
+  if (isGameOver === 2 || whitePlayer.points.length === 30 || blackPlayer.points.length === 30) {
+    if (transcript === ScoreValues.whiteScore) {
+      whitePlayer.sets.push(ScoreValues.addScore);
+      handleEndedSet();
+    } else if (transcript === ScoreValues.blackScore) {
+      blackPlayer.sets.push(ScoreValues.addScore);
+      handleEndedSet();
+    }
+    updateSetsElements();
+  }
+}
+
+// handle end game situation
+function handleEndGame() {
+  if (whitePlayer.sets.length === 2 || blackPlayer.sets.length === 2) {
+    EndGameSound.play();
+    confetti.render();
+  }
+}
+
+// handle set points
+function handleEndedSet() {
+  whitePlayer.points = [];
+  blackPlayer.points = [];
+  updatePointsElements();
+}
+
+// handle update points
+function updatePointsElements() {
+  whitePlayerPoints.textContent = whitePlayer.points.length;
+  blackPlayerPoints.textContent = blackPlayer.points.length;
+}
+
+// handle update set points
+function updateSetsElements() {
+  whitePlayerSets.textContent = whitePlayer.sets.length;
+  blackPlayerSets.textContent = blackPlayer.sets.length;
+}
+
+// reset score board
+document.querySelector('.reset-btn').addEventListener('click', resetScoreBoard);
+
+function resetScoreBoard() {
   whitePlayer.points = [];
   blackPlayer.points = [];
   whitePlayer.sets = [];
@@ -64,35 +133,14 @@ export function resetScoreBoard() {
   location.reload();
 }
 
-// helpers functions
-function handleGameFlow() {
-  if (whitePlayer.points.length === 21) {
-    whitePlayer.sets.push(ScoreValues.addScore);
-    whitePlayer.points = [];
-    blackPlayer.points = [];
-    updatePointsElements();
-  } else if (blackPlayer.points.length === 21) {
-    blackPlayer.sets.push(ScoreValues.addScore);
-    whitePlayer.points = [];
-    blackPlayer.points = [];
-    updatePointsElements();
+// enter browser fullscreen
+const fullscreenBtn = document.querySelector('.fullscreen-btn');
+fullscreenBtn.addEventListener('click', enterFullscreenMode);
+
+function enterFullscreenMode() {
+  if (document.fullscreenElement) {
+    document.exitFullscreen();
+  } else {
+    document.documentElement.requestFullscreen();
   }
-  updateSetsElements();
-}
-
-function handleEndGame() {
-  if (whitePlayer.sets.length === 2 || blackPlayer.sets.length === 2) {
-    EndGameSound.play();
-    confetti.render();
-  }
-}
-
-function updatePointsElements() {
-  whitePlayerPoints.textContent = whitePlayer.points.length;
-  blackPlayerPoints.textContent = blackPlayer.points.length;
-}
-
-function updateSetsElements() {
-  whitePlayerSets.textContent = whitePlayer.sets.length;
-  blackPlayerSets.textContent = blackPlayer.sets.length;
 }
