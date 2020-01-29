@@ -1,4 +1,4 @@
-### App to track badminton score
+### App for badminton match result
 ![](https://github.com/rzubrycki/badminton-score/blob/master/src/images/favicons/apple-touch-icon.png)
 ___
 
