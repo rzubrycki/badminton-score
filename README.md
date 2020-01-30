@@ -1,4 +1,4 @@
-### App to track badminton score
+### App for badminton match result
 ![](https://github.com/rzubrycki/badminton-score/blob/master/src/images/favicons/apple-touch-icon.png)
 ___
 
@@ -11,6 +11,8 @@ Only **desktop version** available due to some inconsistencies of speech recogni
 ___
 
 **Usage:**
+> Requirements: :rotating_light: App needs acceptance to use your microphone.
+
 - app recognizes only two words for easier control during the game,
 - key words are **"biały"** and **"czarny"** respectively for white and black player score,
 - say "biały" or "czarny" to add a point,
