@@ -44,8 +44,8 @@ canvas {
   position: absolute;
   box-shadow: 0px 0px 50px -5px $shadow-lime;
 
-  .player1-points,
-  .player2-points {
+  .player-white-points,
+  .player-black-points {
     width: 47.5vw;
     display: flex;
     align-items: center;
@@ -54,18 +54,18 @@ canvas {
     font-size: 430px;
   }
 
-  .player1-points {
+  .player-white-points {
     background-color: $font-white;
     color: $font-black;
   }
 
-  .player2-points {
+  .player-black-points {
     background-color: $font-black;
     color: $font-white;
   }
 
-  .player1-sets,
-  .player2-sets {
+  .player-white-sets,
+  .player-black-sets {
     display: flex;
     justify-content: center;
     position: absolute;
@@ -74,12 +74,12 @@ canvas {
     font-size: 70px;
   }
 
-  .player1-sets {
+  .player-white-sets {
     left: 40%;
     color: $font-black;
   }
 
-  .player2-sets {
+  .player-black-sets {
     left: 50%;
     color: $font-white;
   }
@@ -91,17 +91,4 @@ canvas {
 
 .fullscreen-btn {
   bottom: 25px;
-}
-
-.move {
-  animation: move linear 1s infinite;
-}
-
-@keyframes move {
-  from {
-    transform: translateY(0vh);
-  }
-  to {
-    transform: translateY(-20vh);
-  }
 }

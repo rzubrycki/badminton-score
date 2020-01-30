@@ -12,10 +12,10 @@ const blackPlayer = {
 };
 
 // dom elements
-const whitePlayerSets = document.querySelector('.player1-sets');
-const blackPlayerSets = document.querySelector('.player2-sets');
-const whitePlayerPoints = document.querySelector('.player1-points');
-const blackPlayerPoints = document.querySelector('.player2-points');
+const whitePlayerSetsElement = document.querySelector('.player-white-sets');
+const blackPlayerSetsElement = document.querySelector('.player-black-sets');
+const whitePlayerPointsElement = document.querySelector('.player-white-points');
+const blackPlayerPointsElement = document.querySelector('.player-black-points');
 
 // confetti settings
 const confettiSettings = { target: 'fireworks', max: 50, clock: 40 };
@@ -38,20 +38,20 @@ export function speechRecognition() {
     if (e.results[0].isFinal) {
       if (transcript.includes(ScoreValues.whiteScore)) {
         whitePlayer.points.push(ScoreValues.addScore);
-        whitePlayerPoints.textContent = whitePlayer.points.length;
+        whitePlayerPointsElement.textContent = whitePlayer.points.length;
         SuccessSound.play();
       } else if (transcript.includes(ScoreValues.blackScore)) {
         blackPlayer.points.push(ScoreValues.addScore);
-        blackPlayerPoints.textContent = blackPlayer.points.length;
+        blackPlayerPointsElement.textContent = blackPlayer.points.length;
         SuccessSound.play();
       }
 
       if (whitePlayer.points.length + blackPlayer.points.length > 40) {
-        handleAdvantageScenario(transcript);
+        handleAdvantageFlow(transcript);
       } else {
         handleGameFlow();
       }
-      handleEndGame();
+      handleFinishedGame();
     }
   });
 
@@ -63,7 +63,7 @@ export function speechRecognition() {
  * HELPERS FUNCTIONS
  */
 
-// handle the "normal game flow"
+// handle the normal game flow
 function handleGameFlow() {
   if (whitePlayer.points.length === 21) {
     whitePlayer.sets.push(ScoreValues.addScore);
@@ -75,8 +75,8 @@ function handleGameFlow() {
   updateSetsElements();
 }
 
-// handle "advantage game flow"
-function handleAdvantageScenario(transcript) {
+// handle advantage game flow
+function handleAdvantageFlow(transcript) {
   const isGameOver = Math.abs(whitePlayer.points.length - blackPlayer.points.length);
   if (isGameOver === 2 || whitePlayer.points.length === 30 || blackPlayer.points.length === 30) {
     if (transcript === ScoreValues.whiteScore) {
@@ -91,7 +91,7 @@ function handleAdvantageScenario(transcript) {
 }
 
 // handle end game situation
-function handleEndGame() {
+function handleFinishedGame() {
   if (whitePlayer.sets.length === 2 || blackPlayer.sets.length === 2) {
     EndGameSound.play();
     confetti.render();
@@ -105,16 +105,16 @@ function handleEndedSet() {
   updatePointsElements();
 }
 
-// handle update points
+// handle update element points
 function updatePointsElements() {
-  whitePlayerPoints.textContent = whitePlayer.points.length;
-  blackPlayerPoints.textContent = blackPlayer.points.length;
+  whitePlayerPointsElement.textContent = whitePlayer.points.length;
+  blackPlayerPointsElement.textContent = blackPlayer.points.length;
 }
 
-// handle update set points
+// handle update element set points
 function updateSetsElements() {
-  whitePlayerSets.textContent = whitePlayer.sets.length;
-  blackPlayerSets.textContent = blackPlayer.sets.length;
+  whitePlayerSetsElement.textContent = whitePlayer.sets.length;
+  blackPlayerSetsElement.textContent = blackPlayer.sets.length;
 }
 
 // reset score board
