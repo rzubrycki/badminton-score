@@ -1,5 +1,5 @@
 export const ScoreValues = {
   addScore: 'score',
-  blackScore: 'czarny',
-  whiteScore: 'biały'
+  blackScore: 'cza',
+  whiteScore: 'bia'
 };

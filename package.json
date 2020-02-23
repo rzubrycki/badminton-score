@@ -9,6 +9,7 @@
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
+    "babel-preset-env": "^1.7.0",
     "parcel-bundler": "^1.12.4",
     "prettier": "^1.19.1",
     "sass": "^1.22.9"
@@ -18,7 +19,6 @@
     "prod": "parcel build index.html --no-minify --no-source-maps"
   },
   "dependencies": {
-    "confetti-js": "0.0.17",
     "howler": "^2.1.3"
   }
 }

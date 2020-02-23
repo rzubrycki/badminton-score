@@ -1,4 +1,3 @@
-import ConfettiGenerator from 'confetti-js';
 import { SuccessSound, EndGameSound } from '../const/sounds';
 import { ScoreValues } from '../const/scoreValues';
 
@@ -12,22 +11,21 @@ const blackPlayer = {
 };
 
 // dom elements
-const whitePlayerSetsElement = document.querySelector('.player-white-sets');
-const blackPlayerSetsElement = document.querySelector('.player-black-sets');
 const whitePlayerPointsElement = document.querySelector('.player-white-points');
 const blackPlayerPointsElement = document.querySelector('.player-black-points');
+const whitePlayerSetsElement = document.querySelector('.player-white-sets');
+const blackPlayerSetsElement = document.querySelector('.player-black-sets');
+const scoreBoardElement = document.querySelector('.scoreboard');
 
-// confetti settings
-const confettiSettings = { target: 'fireworks', max: 50, clock: 40 };
-const confetti = new ConfettiGenerator(confettiSettings);
+// speech recognition initialization
+window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+const recognition = new SpeechRecognition();
+recognition.interimResults = true;
+recognition.lang = 'pl-PL';
 
 export function speechRecognition() {
-  window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  const recognition = new SpeechRecognition();
-  recognition.interimResults = true;
-  recognition.lang = 'pl-PL';
-
   updatePointsElements();
+  const setsSum = whitePlayer.sets.length + blackPlayer.sets.length;
 
   recognition.addEventListener('result', e => {
     const transcript = Array.from(e.results)
@@ -49,7 +47,7 @@ export function speechRecognition() {
       if (whitePlayer.points.length + blackPlayer.points.length > 40) {
         handleAdvantageFlow(transcript);
       } else {
-        handleGameFlow();
+        handleGameFlow(setsSum);
       }
       handleFinishedGame();
     }
@@ -64,13 +62,19 @@ export function speechRecognition() {
  */
 
 // handle the normal game flow
-function handleGameFlow() {
+function handleGameFlow(setsSum) {
   if (whitePlayer.points.length === 21) {
     whitePlayer.sets.push(ScoreValues.addScore);
     handleEndedSet();
+    if (setsSum !== 2 || 3) {
+      changeSides();
+    }
   } else if (blackPlayer.points.length === 21) {
     blackPlayer.sets.push(ScoreValues.addScore);
     handleEndedSet();
+    if (setsSum !== 2 || 3) {
+      changeSides();
+    }
   }
   updateSetsElements();
 }
@@ -79,12 +83,14 @@ function handleGameFlow() {
 function handleAdvantageFlow(transcript) {
   const isGameOver = Math.abs(whitePlayer.points.length - blackPlayer.points.length);
   if (isGameOver === 2 || whitePlayer.points.length === 30 || blackPlayer.points.length === 30) {
-    if (transcript === ScoreValues.whiteScore) {
+    if (transcript.includes(ScoreValues.whiteScore)) {
       whitePlayer.sets.push(ScoreValues.addScore);
       handleEndedSet();
-    } else if (transcript === ScoreValues.blackScore) {
+      changeSides();
+    } else if (transcript.includes(ScoreValues.blackScore)) {
       blackPlayer.sets.push(ScoreValues.addScore);
       handleEndedSet();
+      changeSides();
     }
     updateSetsElements();
   }
@@ -94,7 +100,6 @@ function handleAdvantageFlow(transcript) {
 function handleFinishedGame() {
   if (whitePlayer.sets.length === 2 || blackPlayer.sets.length === 2) {
     EndGameSound.play();
-    confetti.render();
   }
 }
 
@@ -102,7 +107,34 @@ function handleFinishedGame() {
 function handleEndedSet() {
   whitePlayer.points = [];
   blackPlayer.points = [];
+
   updatePointsElements();
+}
+
+// handle changing sides after won set
+function changeSides() {
+  const setsSum = whitePlayer.sets.length + blackPlayer.sets.length;
+  switch (setsSum) {
+    case 1:
+      scoreBoardElement.style.cssText = 'flex-flow: row-reverse';
+      whitePlayerSetsElement.style.cssText = 'left: 50%';
+      blackPlayerSetsElement.style.cssText = 'left: 40%';
+
+      break;
+
+    case 2:
+      if (whitePlayer.sets.length === 0 || blackPlayer.sets.length === 0) {
+        break;
+      } else {
+        scoreBoardElement.style.cssText = 'flex-flow: row';
+        whitePlayerSetsElement.style.cssText = 'left: 40%';
+        blackPlayerSetsElement.style.cssText = 'left: 50%';
+      }
+      break;
+
+    case 3:
+      break;
+  }
 }
 
 // handle update element points
